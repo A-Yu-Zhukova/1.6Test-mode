@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 public class RegistrationDto {
-    private final String name;
+    private final String login;
     private final String password;
-    private final String active;
+    private final String status;
 }

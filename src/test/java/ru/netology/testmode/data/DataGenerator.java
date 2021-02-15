@@ -15,5 +15,21 @@ public class DataGenerator {
                     "active"
             );
         }
+
+        public static RegistrationDto generateUserBlocked() {
+            return new RegistrationDto(
+                    "user2",
+                    "password2",
+                    "blocked"
+            );
+        }
+
+        public static String getBadLogin() {
+            return "user3";
+        }
+
+        public static String getBadPassword() {
+            return "password3";
+        }
     }
 }
