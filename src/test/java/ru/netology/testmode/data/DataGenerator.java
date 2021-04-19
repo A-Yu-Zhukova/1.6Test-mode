@@ -1,35 +1,38 @@
 package ru.netology.testmode.data;
 
+import ru.netology.testmode.api.ApiHelper;
+import com.github.javafaker.Faker;
+
+import java.util.Locale;
+
 public class DataGenerator {
     private DataGenerator() {
     }
 
     public static class Registration {
+        private static Faker faker = new Faker(new Locale("en"));
+
         private Registration() {
         }
 
-        public static RegistrationDto generateUser() {
-            return new RegistrationDto(
-                    "user",
-                    "password",
-                    "active"
+        public static RegistrationDto generateUser(boolean isBlocked) {
+
+            RegistrationDto user = new RegistrationDto(
+                    faker.name().username(),
+                    faker.internet().password(),
+                    isBlocked ? "blocked" : "active"
             );
+            ApiHelper.sendData(user);
+            return user;
         }
 
-        public static RegistrationDto generateUserBlocked() {
-            return new RegistrationDto(
-                    "user2",
-                    "password2",
-                    "blocked"
-            );
-        }
 
         public static String getBadLogin() {
-            return "user3";
+            return faker.name().username();
         }
 
         public static String getBadPassword() {
-            return "password3";
+            return faker.internet().password();
         }
     }
 }
